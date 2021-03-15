@@ -1,5 +1,11 @@
+import java.util.Random;
+
 public class Main {
+
+    static Random random = new Random();
+
     public static void main(String[] args) {
+
         int rows = 4;
         int column = 4;
         char ch = 45;
@@ -26,11 +32,10 @@ public class Main {
         if (array.length == 4 & array[0].length == 4) {
             for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array[0].length; j++) {
-                    array[i][j] = Integer.toString(i + j);
+                    array[i][j] = Integer.toString(random.nextInt(10));
                 }
             }
         } else throw new MyArraySizeException(array.length, array[0].length);
-
     }
 
     private static void arrayDisplay(String[][] array) {
