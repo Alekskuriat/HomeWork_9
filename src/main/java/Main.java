@@ -3,11 +3,9 @@ public class Main {
         int rows = 4;
         int column = 4;
         char ch = 45;
-        String[][] arrayString;
+        String[][] arrayString = new String[rows][column];
 
         try {
-            if (rows == 4 & column == 4) {
-                arrayString = new String[rows][column];
 
                 creatingAnArray(arrayString);
 
@@ -15,9 +13,7 @@ public class Main {
 
                 arrayDisplay(arrayString);
 
-            } else throw new MyArraySizeException(rows, column);
-
-            arrayTransformation(arrayString);
+                arrayTransformation(arrayString);
 
         } catch (MyArraySizeException | MyArrayDataException e) {
             System.err.println(e);
@@ -26,13 +22,15 @@ public class Main {
 
     }
 
-    public static void creatingAnArray(String[][] array) {
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
-                array[i][j] = Integer.toString(i + j);
+    public static void creatingAnArray(String[][] array) throws MyArraySizeException {
+        if (array.length == 4 & array[0].length == 4) {
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[0].length; j++) {
+                    array[i][j] = Integer.toString(i + j);
+                }
             }
-        }
+        } else throw new MyArraySizeException(array.length, array[0].length);
+
     }
 
     private static void arrayDisplay(String[][] array) {
